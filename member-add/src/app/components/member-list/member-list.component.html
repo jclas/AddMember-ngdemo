@@ -1,0 +1,31 @@
+<div class="member-list-container">
+  <div class="header">
+    <h2>Member Management</h2>
+    <button class="btn btn-primary" (click)="addMember()">Add Member</button>
+  </div>
+
+  <div class="members-section" *ngIf="members.length > 0; else noMembers">
+    <h3>Members List</h3>
+    <div class="members-grid">
+      <div class="member-card" *ngFor="let member of members">
+        <div class="member-header">
+          <h4>{{ member.displayName }}</h4>
+          <span class="member-id">#{{ member.id }}</span>
+        </div>
+        <div class="member-details">
+          <p><strong>Name:</strong> {{ member.firstName }} {{ member.lastName }}</p>
+          <p><strong>Email:</strong> {{ member.email }}</p>
+          <p><strong>Phone:</strong> {{ member.phoneNumber }}</p>
+          <p><strong>Address:</strong> {{ member.street }}, {{ member.city }}, {{ member.state }} {{ member.postalCode }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noMembers>
+    <div class="no-members">
+      <h3>No Members Yet</h3>
+      <p>Click the "Add Member" button to get started!</p>
+    </div>
+  </ng-template>
+</div>
