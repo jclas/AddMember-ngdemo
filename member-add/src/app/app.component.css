@@ -2,6 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .app-header {
@@ -16,11 +17,18 @@
   font-size: 1.5rem;
 }
 
-main {
+.main-content {
   flex: 1;
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  /* Ensure minimum height to push footer down to at least 85% */
+  min-height: calc(80vh - 80px); /* 80px approximate header height */
 }
+
+/* Footer will naturally flow after content with margin-top: 3rem from footer component */
+/* The flex: 1 on main-content ensures it takes available space */
+/* If content is short, the footer will be pushed down to at least 85% of viewport */
+/* If content is long, footer will appear after content with proper spacing */
