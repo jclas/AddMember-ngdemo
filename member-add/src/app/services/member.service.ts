@@ -48,4 +48,11 @@ export class MemberService {
   clearCurrentMember(): void {
     this.currentMemberSubject.next({});
   }
+
+  deleteMember(id: number): void {
+    const members = this.membersSubject.value;
+    const updatedMembers = members.filter(member => member.id !== id);
+    this.membersSubject.next(updatedMembers);
+    localStorage.setItem('members', JSON.stringify(updatedMembers));
+  }
 }

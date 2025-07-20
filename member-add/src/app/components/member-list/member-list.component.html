@@ -8,6 +8,9 @@
     <h3>Members List</h3>
     <div class="members-grid">
       <div class="member-card" *ngFor="let member of members">
+        <button class="delete-btn" (click)="deleteMember(member.id!)" title="Delete member" *ngIf="member.id">
+          <span class="delete-x">&times;</span>
+        </button>
         <div class="member-header">
           <h4>{{ member.displayName }}</h4>
           <span class="member-id">#{{ member.id }}</span>

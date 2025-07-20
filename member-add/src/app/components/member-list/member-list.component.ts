@@ -29,4 +29,10 @@ export class MemberListComponent implements OnInit {
     this.memberService.clearCurrentMember();
     this.router.navigate(['/add-member/basic']);
   }
+
+  deleteMember(id: number) {
+    if (confirm('Are you sure you want to delete this member?')) {
+      this.memberService.deleteMember(id);
+    }
+  }
 }

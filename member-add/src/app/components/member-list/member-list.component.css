@@ -54,10 +54,41 @@
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s ease;
+  position: relative;
 }
 
 .member-card:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.delete-btn:hover {
+  background: #495057;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.delete-x {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .member-header {
@@ -66,6 +97,7 @@
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
+  padding-right: 50px;
   border-bottom: 1px solid #eee;
 }
 
