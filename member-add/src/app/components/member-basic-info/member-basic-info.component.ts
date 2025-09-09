@@ -47,6 +47,11 @@ export class MemberBasicInfoComponent implements OnInit {
   }
 
   isFormValid(): boolean {
-    return !!(this.email && this.displayName && this.firstName && this.lastName);
+      return !!(this.email && this.isEmailValid(this.email) && this.displayName && this.firstName && this.lastName);
+    }
+
+    isEmailValid(email: string): boolean {
+      // Simple email regex
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 }
