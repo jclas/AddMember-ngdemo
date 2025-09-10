@@ -1,0 +1,115 @@
+/* Row layout for city and state fields */
+.form-row {
+	display: flex;
+	gap: 1.5rem;
+}
+.form-row .form-group {
+	flex: 1;
+}
+/* Modern card style for edit page */
+.form-container {
+	background: #f8f9fa;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+	padding: 2rem 2.5rem;
+	max-width: 500px;
+	margin: 2rem auto;
+}
+.form-container h2 {
+	color: #1976d2;
+	margin-bottom: 1.5rem;
+}
+.form-group {
+	margin-bottom: 1.25rem;
+}
+.form-group label {
+	font-weight: 500;
+	color: #333;
+	display: block;
+	margin-bottom: 0.5rem;
+}
+.form-control {
+	width: 100%;
+	padding: 0.5rem;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+}
+.form-actions {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+	background: #1976d2;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.btn-primary:hover {
+	background: #1565c0;
+}
+.btn-secondary {
+	background: #e0e0e0;
+	color: #333;
+	border: none;
+	border-radius: 4px;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.btn-secondary:hover {
+	background: #bdbdbd;
+}
+/* Modern card style for edit page */
+.edit-card {
+	background: #f8f9fa;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+	padding: 2rem 2.5rem;
+	max-width: 500px;
+	margin: 2rem auto;
+}
+.edit-card h2 {
+	color: #1976d2;
+	margin-bottom: 1.5rem;
+}
+.edit-card label {
+	font-weight: 500;
+	color: #333;
+}
+.edit-card input, .edit-card select {
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 1.25rem;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+}
+.edit-card button {
+	background: #1976d2;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.edit-card button:hover {
+	background: #1565c0;
+}
+/* Edit Address Component Styles */

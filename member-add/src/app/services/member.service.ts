@@ -36,6 +36,10 @@ export class MemberService {
     localStorage.setItem('members', JSON.stringify(updatedMembers));
   }
 
+  /**
+   * This updates the member to be added.
+   * @param memberData 
+   */
   updateCurrentMember(memberData: Partial<Member>): void {
     const current = this.currentMemberSubject.value;
     this.currentMemberSubject.next({ ...current, ...memberData });
@@ -55,4 +59,12 @@ export class MemberService {
     this.membersSubject.next(updatedMembers);
     localStorage.setItem('members', JSON.stringify(updatedMembers));
   }
+
+    updateMember(updated: Member): void {
+      const members = this.membersSubject.value.map(member =>
+        member.id === updated.id ? { ...member, ...updated } : member
+      );
+      this.membersSubject.next(members);
+      localStorage.setItem('members', JSON.stringify(members));
+    }
 }

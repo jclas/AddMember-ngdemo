@@ -1,4 +1,4 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +14,9 @@ import { MemberService } from '../../services/member.service';
 export class MemberContactComponent implements OnInit {
   phoneNumber: string = '';
   birthdate: string = '';
+  readonly MAX_PHONE_DIGITS = 10;
+  readonly MAX_PHONE_LENGTH = 12; //10 digits + 2 separators
+  fromReview = false;
 
   constructor(
     private memberService: MemberService,
@@ -21,53 +24,87 @@ export class MemberContactComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fromReview = !!history.state.fromReview;
     const currentMember = this.memberService.getCurrentMember();
     this.phoneNumber = currentMember.phoneNumber || '';
     this.birthdate = currentMember.birthdate || '';
   }
 
-  onPhonePaste(event: ClipboardEvent) {
-    const pasted = event.clipboardData && event.clipboardData.getData('text') ? event.clipboardData.getData('text') : '';
-    this.onPhoneInput(pasted);
-    event.preventDefault();
-  }
-
-    onPhoneInput(value: string) {
-      // Remove all non-digit characters
-      const digits = value.replace(/\D/g, '');
-      let formatted = digits;
-      if (digits.length > 3 && digits.length <= 6) {
-        formatted = digits.slice(0, 3) + '-' + digits.slice(3);
-      } else if (digits.length > 6) {
-        formatted = digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
-      }
-      this.phoneNumber = formatted;
-    }
-
+  /* next page */
   next() {
     if (this.isFormValid()) {
       this.memberService.updateCurrentMember({
         phoneNumber: this.phoneNumber,
         birthdate: this.birthdate
       });
-      this.router.navigate(['/add-member/review']);
+      if (this.fromReview) {
+        this.router.navigate(['/add-member/review']);
+      } else {
+        this.router.navigate(['/add-member/review']); // This is the last step, so always go to review
+      }
     }
   }
 
   back() {
-    this.memberService.updateCurrentMember({
-      phoneNumber: this.phoneNumber,
-      birthdate: this.birthdate
-    });
-    this.router.navigate(['/add-member/address']);
+    if (this.fromReview) {
+      this.router.navigate(['/add-member/review']);
+    } else {
+      this.router.navigate(['/add-member/address']);
+    }
   }
 
   isFormValid(): boolean {
-      return !!(this.phoneNumber && this.isPhoneValid(this.phoneNumber) && this.birthdate);
-    }
-
-    isPhoneValid(phone: string): boolean {
-    // US phone number pattern: 555-123-4567 or 555.123.4567
-      return /^\d{3}-\d{3}-\d{4}$/.test(phone);
+    return !!(this.phoneNumber && this.isPhoneValid(this.phoneNumber) && this.birthdate);
   }
+
+  isPhoneValid(phone: string): boolean {
+    // US phone number pattern: 555-123-4567 and must contain exactly 10 digits
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length !== 10) return false;
+    // Check for any extra characters after the 10th digit
+    const reg = /^(\d{3}-\d{3}-\d{4})(.*)$/;
+    // const match = phone.match(/^(\d{3}-\d{3}-\d{4})(.*)$/)
+    const match = phone.match(reg)
+
+    if (match && match[2].trim().length > 0) return false;
+    return /^\d{3}-\d{3}-\d{4}$/.test(phone);
+  }
+
+  onPhoneKeydown(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+
+    console.log("event.key:" + event.key);
+    
+    if (event.key && event.key.length == 1) {
+      if (event.ctrlKey && (event.key.toLowerCase() =="c" || event.key.toLowerCase() == "v")) {
+        console.log("control c or v combo!");
+      } else {
+        console.log("else...");
+
+        if (input.value.length >= this.MAX_PHONE_LENGTH || !/[0-9]/.test(event.key)) {
+          event.preventDefault(); //block non-digit characters or too many characters
+          return;
+        }
+      }
+    }
+  }
+
+  onPhoneInput(event: Event) {
+    let input = event.target as HTMLInputElement;
+    let digits = input.value.replace(/\D/g, '');
+    digits = digits.slice(0, this.MAX_PHONE_DIGITS);
+
+    let result = "";
+
+    for (let i=0; i < digits.length; i++) {
+      if (i == 3 || i == 6) {
+        result += "-";
+      }
+      result += digits[i];
+    }
+    
+    input.value = result; //this line is needed to correct the input immediately, since the next line won't update the input because of where are in the event cycle.
+    this.phoneNumber = result;
+  }
+
 }

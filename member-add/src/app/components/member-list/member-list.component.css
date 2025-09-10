@@ -1,3 +1,74 @@
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.contact-info-item {
+  color: #555;
+  font-size: 1rem;
+}
+/* Pencil icon styling for edit links */
+/* Pencil icon placeholder with SVG as pseudo-element */
+.pencil-icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  opacity: 0.7;
+  z-index: 2;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.pencil-icon::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M15.5 2.5L17.5 4.5C17.7761 4.77614 17.7761 5.22386 17.5 5.5L7 16H4V13L14.5 2.5C14.7761 2.22386 15.2239 2.22386 15.5 2.5Z' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: filter 0.2s;
+}
+.pencil-icon:hover {
+  opacity: 1;
+}
+.pencil-icon:hover::before {
+  filter: brightness(0) saturate(100%) invert(32%) sepia(98%) saturate(749%) hue-rotate(184deg) brightness(97%) contrast(101%);
+}
+.info-card {
+  position: relative;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+/* Card styles for each "page" of member info */
+.info-card {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.address-card {
+  position: relative;
+  margin-top: 0.5rem;
+}
+.contact-card {
+  position: relative;
+}
+/* Indent address block under Address label */
+.address-block {
+  margin-left: 18px;
+}
+/* Pencil edit icon link styles */
 .member-list-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -95,10 +166,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   padding-right: 50px;
-  border-bottom: 1px solid #eee;
 }
 
 .member-header h4 {

@@ -41,17 +41,7 @@ export class MemberReviewComponent implements OnInit {
   }
 
   edit(section: string) {
-    switch (section) {
-      case 'basic':
-        this.router.navigate(['/add-member/basic']);
-        break;
-      case 'address':
-        this.router.navigate(['/add-member/address']);
-        break;
-      case 'contact':
-        this.router.navigate(['/add-member/contact']);
-        break;
-    }
+    this.router.navigate([`/add-member/${section}`], { state: { fromReview: true } });
   }
 
   isDataComplete(): boolean {

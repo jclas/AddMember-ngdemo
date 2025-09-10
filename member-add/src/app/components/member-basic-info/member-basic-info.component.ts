@@ -16,6 +16,7 @@ export class MemberBasicInfoComponent implements OnInit {
   displayName: string = '';
   firstName: string = '';
   lastName: string = '';
+  fromReview = false;
 
   constructor(
     private memberService: MemberService,
@@ -23,6 +24,7 @@ export class MemberBasicInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fromReview = !!history.state.fromReview;
     const currentMember = this.memberService.getCurrentMember();
     this.email = currentMember.email || '';
     this.displayName = currentMember.displayName || '';
@@ -38,12 +40,20 @@ export class MemberBasicInfoComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName
       });
-      this.router.navigate(['/add-member/address']);
+      if (this.fromReview) {
+        this.router.navigate(['/add-member/review']);
+      } else {
+        this.router.navigate(['/add-member/address']);
+      }
     }
   }
 
   back() {
-    this.router.navigate(['/members']);
+    if (this.fromReview) {
+      this.router.navigate(['/add-member/review']);
+    } else {
+      this.router.navigate(['/members']);
+    }
   }
 
   isFormValid(): boolean {

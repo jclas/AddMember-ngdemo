@@ -12,15 +12,43 @@
           <span class="delete-x">&times;</span>
         </button>
         <div class="member-header">
-          <h4>{{ member.displayName }}</h4>
+          <h4>
+            {{ member.displayName }}
+          </h4>
           <span class="member-id">#{{ member.id }}</span>
         </div>
         <div class="member-details">
-          <p><strong>Name:</strong> {{ member.firstName }} {{ member.lastName }}</p>
-          <p><strong>Email:</strong> {{ member.email }}</p>
-          <p><strong>Phone:</strong> {{ member.phoneNumber }}</p>
-          <p><strong>Address:</strong> {{ member.street }}, {{ member.city }}, {{ member.state }} {{ member.postalCode }}</p>
-            <p><strong>Birthdate:</strong> {{ member.birthdate }}</p>
+          <div class="info-card basic-info-card">
+            <a [routerLink]="['/edit-member/basic', member.id]" *ngIf="member.id" title="Edit basic info">
+              <span class="pencil-icon"></span>
+            </a>
+            <p><strong>Name:</strong> {{ member.firstName }} {{ member.lastName }}</p>
+            <p><strong>Email:</strong> {{ member.email }}</p>
+          </div>
+          <div class="info-card address-card">
+            <a [routerLink]="['/edit-member/address', member.id]" *ngIf="member.id" title="Edit address">
+              <span class="pencil-icon"></span>
+            </a>
+            <strong>Address:</strong>
+            <div class="address-block">
+              <div>{{ member.street }}</div>
+              <div *ngIf="member.street2 && member.street2.trim() !== ''">{{ member.street2 }}</div>
+              <div>{{ member.city }}, {{ member.state }} {{ member.postalCode }}</div>
+            </div>
+          </div>
+          <div class="info-card contact-card">
+            <a [routerLink]="['/edit-member/contact', member.id]" *ngIf="member.id" title="Edit contact">
+              <span class="pencil-icon"></span>
+            </a>
+            <div class="contact-info-row">
+              <div class="contact-info-item">
+                <strong>Phone:</strong> {{ member.phoneNumber }}
+              </div>
+              <div class="contact-info-item">
+                <strong>Birthdate:</strong> {{ member.birthdate | date:'shortDate' }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

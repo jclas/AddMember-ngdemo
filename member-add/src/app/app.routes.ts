@@ -11,5 +11,8 @@ export const routes: Routes = [
   { path: 'add-member/basic', component: MemberBasicInfoComponent },
   { path: 'add-member/address', component: MemberAddressComponent },
   { path: 'add-member/contact', component: MemberContactComponent },
-  { path: 'add-member/review', component: MemberReviewComponent }
+  { path: 'add-member/review', component: MemberReviewComponent },
+  { path: 'edit-member/basic/:id', loadComponent: () => import('./components/edit/edit-basic-info.component').then(m => m.EditBasicInfoComponent) },
+  { path: 'edit-member/address/:id', loadComponent: () => import('./components/edit/edit-address.component').then(m => m.EditAddressComponent) },
+  { path: 'edit-member/contact/:id', loadComponent: () => import('./components/edit/edit-contact.component').then(m => m.EditContactComponent) },
 ];

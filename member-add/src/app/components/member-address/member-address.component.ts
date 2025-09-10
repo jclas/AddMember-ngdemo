@@ -17,6 +17,7 @@ export class MemberAddressComponent implements OnInit {
   city: string = '';
   state: string = '';
   postalCode: string = '';
+  fromReview = false;
 
   constructor(
     private memberService: MemberService,
@@ -24,6 +25,7 @@ export class MemberAddressComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fromReview = !!history.state.fromReview;
     const currentMember = this.memberService.getCurrentMember();
     this.street = currentMember.street || '';
     this.street2 = currentMember.street2 || '';
@@ -41,19 +43,27 @@ export class MemberAddressComponent implements OnInit {
         state: this.state,
         postalCode: this.postalCode
       });
-      this.router.navigate(['/add-member/contact']);
+      if (this.fromReview) {
+        this.router.navigate(['/add-member/review']);
+      } else {
+        this.router.navigate(['/add-member/contact']);
+      }
     }
   }
 
   back() {
-    this.memberService.updateCurrentMember({
-      street: this.street,
-      street2: this.street2,
-      city: this.city,
-      state: this.state,
-      postalCode: this.postalCode
-    });
-    this.router.navigate(['/add-member/basic']);
+    if (this.fromReview) {
+      this.router.navigate(['/add-member/review']);
+    } else {
+      this.memberService.updateCurrentMember({
+        street: this.street,
+        street2: this.street2,
+        city: this.city,
+        state: this.state,
+        postalCode: this.postalCode
+      });
+      this.router.navigate(['/add-member/basic']);
+    }
   }
 
   isFormValid(): boolean {
