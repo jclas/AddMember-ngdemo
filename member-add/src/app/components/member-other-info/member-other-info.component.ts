@@ -5,13 +5,13 @@ import { Router } from '@angular/router';
 import { MemberService } from '../../services/member.service';
 
 @Component({
-  selector: 'app-member-contact',
+  selector: 'app-member-other',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './member-contact.component.html',
-  styleUrl: './member-contact.component.css'
+  templateUrl: './member-other-info.component.html',
+  styleUrl: './member-other-info.component.css'
 })
-export class MemberContactComponent implements OnInit {
+export class MemberOtherInfoComponent implements OnInit {
   phoneNumber: string = '';
   birthdate: string = '';
   readonly MAX_PHONE_DIGITS = 10;
@@ -25,15 +25,15 @@ export class MemberContactComponent implements OnInit {
 
   ngOnInit() {
     this.fromReview = !!history.state.fromReview;
-    const currentMember = this.memberService.getCurrentMember();
-    this.phoneNumber = currentMember.phoneNumber || '';
-    this.birthdate = currentMember.birthdate || '';
+    const newMember = this.memberService.getNewMember();
+    this.phoneNumber = newMember.phoneNumber || '';
+    this.birthdate = newMember.birthdate || '';
   }
 
   /* next page */
   next() {
     if (this.isFormValid()) {
-      this.memberService.updateCurrentMember({
+      this.memberService.updateNewMember({
         phoneNumber: this.phoneNumber,
         birthdate: this.birthdate
       });

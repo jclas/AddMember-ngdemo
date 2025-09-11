@@ -20,7 +20,7 @@ export class MemberReviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.memberData = this.memberService.getCurrentMember();
+    this.memberData = this.memberService.getNewMember();
     
     // Redirect to basic info if no data
     if (!this.memberData.email) {
@@ -31,13 +31,13 @@ export class MemberReviewComponent implements OnInit {
   save() {
     if (this.isDataComplete()) {
       this.memberService.addMember(this.memberData as Member);
-      this.memberService.clearCurrentMember();
+      this.memberService.clearNewMember();
       this.router.navigate(['/members']);
     }
   }
 
   back() {
-    this.router.navigate(['/add-member/contact']);
+    this.router.navigate(['/add-member/other']);
   }
 
   edit(section: string) {

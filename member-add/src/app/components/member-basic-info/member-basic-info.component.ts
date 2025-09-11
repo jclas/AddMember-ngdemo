@@ -25,16 +25,16 @@ export class MemberBasicInfoComponent implements OnInit {
 
   ngOnInit() {
     this.fromReview = !!history.state.fromReview;
-    const currentMember = this.memberService.getCurrentMember();
-    this.email = currentMember.email || '';
-    this.displayName = currentMember.displayName || '';
-    this.firstName = currentMember.firstName || '';
-    this.lastName = currentMember.lastName || '';
+    const newMember = this.memberService.getNewMember();
+    this.email = newMember.email || '';
+    this.displayName = newMember.displayName || '';
+    this.firstName = newMember.firstName || '';
+    this.lastName = newMember.lastName || '';
   }
 
   next() {
     if (this.isFormValid()) {
-      this.memberService.updateCurrentMember({
+      this.memberService.updateNewMember({
         email: this.email,
         displayName: this.displayName,
         firstName: this.firstName,

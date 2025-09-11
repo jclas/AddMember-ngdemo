@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { MemberListComponent } from './components/member-list/member-list.component';
 import { MemberBasicInfoComponent } from './components/member-basic-info/member-basic-info.component';
 import { MemberAddressComponent } from './components/member-address/member-address.component';
-import { MemberContactComponent } from './components/member-contact/member-contact.component';
+import { MemberOtherInfoComponent } from './components/member-other-info/member-other-info.component';
 import { MemberReviewComponent } from './components/member-review/member-review.component';
 
 export const routes: Routes = [
@@ -10,9 +10,9 @@ export const routes: Routes = [
   { path: 'members', component: MemberListComponent },
   { path: 'add-member/basic', component: MemberBasicInfoComponent },
   { path: 'add-member/address', component: MemberAddressComponent },
-  { path: 'add-member/contact', component: MemberContactComponent },
+  { path: 'add-member/other', component: MemberOtherInfoComponent },
   { path: 'add-member/review', component: MemberReviewComponent },
-  { path: 'edit-member/basic/:id', loadComponent: () => import('./components/edit/edit-basic-info.component').then(m => m.EditBasicInfoComponent) },
-  { path: 'edit-member/address/:id', loadComponent: () => import('./components/edit/edit-address.component').then(m => m.EditAddressComponent) },
-  { path: 'edit-member/contact/:id', loadComponent: () => import('./components/edit/edit-contact.component').then(m => m.EditContactComponent) },
+  { path: 'edit-member/basic/:id', loadComponent: () => import('./components/edit-basic-info/edit-basic-info.component').then(m => m.EditBasicInfoComponent) },
+  { path: 'edit-member/address/:id', loadComponent: () => import('./components/edit-address/edit-address.component').then(m => m.EditAddressComponent) },
+  { path: 'edit-member/other/:id', loadComponent: () => import('./components/edit-other-info/edit-other-info.component').then(m => m.EditOtherInfoComponent) },
 ];

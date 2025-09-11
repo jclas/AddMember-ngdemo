@@ -37,16 +37,14 @@
             </div>
           </div>
           <div class="info-card contact-card">
-            <a [routerLink]="['/edit-member/contact', member.id]" *ngIf="member.id" title="Edit contact">
+            <a [routerLink]="['/edit-member/other', member.id]" *ngIf="member.id" title="Edit other info">
               <span class="pencil-icon"></span>
             </a>
-            <div class="contact-info-row">
-              <div class="contact-info-item">
-                <strong>Phone:</strong> {{ member.phoneNumber }}
-              </div>
-              <div class="contact-info-item">
-                <strong>Birthdate:</strong> {{ member.birthdate | date:'shortDate' }}
-              </div>
+            <div class="other-info-item">
+              <strong>Phone:</strong> {{ member.phoneNumber }}
+            </div>
+            <div class="other-info-item">
+              <strong>Birthdate:</strong> {{ member.birthdate | date:'shortDate' }}
             </div>
           </div>
         </div>

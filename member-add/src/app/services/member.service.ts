@@ -9,8 +9,8 @@ export class MemberService {
   private membersSubject = new BehaviorSubject<Member[]>([]);
   public members$ = this.membersSubject.asObservable();
 
-  private currentMemberSubject = new BehaviorSubject<Partial<Member>>({});
-  public currentMember$ = this.currentMemberSubject.asObservable();
+  private newMemberSubject = new BehaviorSubject<Partial<Member>>({});
+  public newMember$ = this.newMemberSubject.asObservable();
 
   private nextId = 1;
 
@@ -40,17 +40,17 @@ export class MemberService {
    * This updates the member to be added.
    * @param memberData 
    */
-  updateCurrentMember(memberData: Partial<Member>): void {
-    const current = this.currentMemberSubject.value;
-    this.currentMemberSubject.next({ ...current, ...memberData });
+  updateNewMember(memberData: Partial<Member>): void {
+    const current = this.newMemberSubject.value;
+    this.newMemberSubject.next({ ...current, ...memberData });
   }
 
-  getCurrentMember(): Partial<Member> {
-    return this.currentMemberSubject.value;
+  getNewMember(): Partial<Member> {
+    return this.newMemberSubject.value;
   }
 
-  clearCurrentMember(): void {
-    this.currentMemberSubject.next({});
+  clearNewMember(): void {
+    this.newMemberSubject.next({});
   }
 
   deleteMember(id: number): void {

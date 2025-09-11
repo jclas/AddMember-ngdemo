@@ -1,10 +1,10 @@
-.contact-info-row {
+.other-info-row {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   margin-top: 0.5rem;
 }
-.contact-info-item {
+.other-info-item {
   color: #555;
   font-size: 1rem;
 }

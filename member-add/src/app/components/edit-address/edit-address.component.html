@@ -1,5 +1,6 @@
 <div class="form-container">
   <h2>Edit Member - Address</h2>
+  <h3 *ngIf="member">{{ member.displayName }}</h3>
   <form *ngIf="editMember">
     <div class="form-group">
       <label for="street">Street</label>

@@ -26,7 +26,7 @@ export class MemberListComponent implements OnInit {
   }
 
   addMember() {
-    this.memberService.clearCurrentMember();
+    this.memberService.clearNewMember();
     this.router.navigate(['/add-member/basic']);
   }
 

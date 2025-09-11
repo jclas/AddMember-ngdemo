@@ -16,7 +16,7 @@ A modern Angular Single Page Application (SPA) for managing member information w
 1. **Main Page** (`/members`) - Member list with add button
 2. **Basic Info** (`/add-member/basic`) - Email, display name, first/last name
 3. **Address** (`/add-member/address`) - Street address, city, state, postal code
-4. **Contact** (`/add-member/contact`) - Phone number and birth date
+4. **Contact** (`/add-member/other`) - Phone number and birth date
 5. **Review** (`/add-member/review`) - Review and save member information
 
 ## 🛠 Tech Stack
@@ -75,25 +75,28 @@ npm test
 
 ```
 AddMember-ngdemo/
-├── member-add/                 # Angular application
+├── member-add/
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── components/     # Angular components
+│   │   │   ├── components/
 │   │   │   │   ├── member-list/
 │   │   │   │   ├── member-basic-info/
 │   │   │   │   ├── member-address/
 │   │   │   │   ├── member-contact/
-│   │   │   │   └── member-review/
-│   │   │   ├── models/         # TypeScript interfaces
-│   │   │   ├── services/       # Angular services
+│   │   │   │   ├── member-review/
+│   │   │   │   ├── edit-basic-info/
+│   │   │   │   ├── edit-address/
+│   │   │   │   ├── edit-other-info/
+│   │   │   ├── models/
+│   │   │   ├── services/
 │   │   │   ├── app.component.*
 │   │   │   └── app.routes.ts
-│   │   ├── styles.css         # Global styles
+│   │   ├── styles.css
 │   │   └── index.html
-│   ├── angular.json           # Angular configuration
-│   ├── package.json          # Dependencies and scripts
-│   └── tsconfig.json         # TypeScript configuration
-└── README.md                 # This file
+│   ├── angular.json
+│   ├── package.json
+│   └── tsconfig.json
+└── README.md
 ```
 
 ## 💾 Data Storage

@@ -1,5 +1,6 @@
 <div class="form-container">
-  <h2>Edit Member - Contact</h2>
+  <h2>Edit Member - Other Information</h2>
+  <h3 *ngIf="member">{{ member.displayName }}</h3>
   <form *ngIf="editMember">
     <div class="form-group">
       <label for="phoneNumber">Phone Number</label>

@@ -6,13 +6,13 @@ import { MemberService } from '../../services/member.service';
 import { Member } from '../../models/member.model';
 
 @Component({
-  selector: 'app-edit-contact',
+  selector: 'app-edit-other-info',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './edit-contact.component.html',
-  styleUrl: './edit-contact.component.css'
+  templateUrl: './edit-other-info.component.html',
+  styleUrl: './edit-other-info.component.css'
 })
-export class EditContactComponent implements OnInit {
+export class EditOtherInfoComponent implements OnInit {
   readonly MAX_PHONE_DIGITS = 10;
   readonly MAX_PHONE_LENGTH = 12; // 10 digits + 2 separators
 
