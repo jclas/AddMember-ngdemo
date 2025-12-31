@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Show repository name
+        run: echo "Repository name is ${{ github.event.repository.name }}"
+
       - name: Build Angular app
         run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
 
