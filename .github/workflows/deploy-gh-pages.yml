@@ -19,13 +19,13 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: cd member-add && npm install
 
       - name: Show repository name
         run: echo "Repository name is ${{ github.event.repository.name }}"
 
       - name: Build Angular app
-        run: npm run build -- --base-href "/AddMember-ngdemo/"
+        run: cd member-add && npm run build -- --base-href "/AddMember-ngdemo/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
