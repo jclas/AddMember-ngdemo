@@ -28,7 +28,7 @@ jobs:
         run: echo "Repository name is ${{ github.event.repository.name }}"
 
       - name: Build Angular app
-        run: cd member-add && npm run build -- --base-href "/AddMember-ngdemo/"
+        run: cd member-add && npm run build -- --base-href "/${{ github.event.repository.name }}/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
