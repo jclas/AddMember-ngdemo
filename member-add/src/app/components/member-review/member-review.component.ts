@@ -61,7 +61,8 @@ export class MemberReviewComponent implements OnInit {
 
   formatDate(dateString: string): string {
     if (!dateString) return '';
-    const date = new Date(dateString);
+    const date = new Date(dateString + "T00:00:00");  //adding time prevents 0-based day
+
     return date.toLocaleDateString();
   }
 }
