@@ -1,6 +1,9 @@
+<div class="header">
+  <h2>Add Member</h2>
+</div>
 <div class="form-container">
   <div class="form-header">
-    <h2>Add Member - Other Information</h2>
+    <h2>Other Information</h2>
     <p>Step 3 of 4: Enter member's other details</p>
   </div>
 
@@ -8,8 +11,7 @@
     <div class="form-group">
       <label for="phoneNumber">Phone Number *</label>
       <input type="tel" id="phoneNumber" [(ngModel)]="phoneNumber" (keydown)="onPhoneKeydown($event)" (input)="onPhoneInput($event)"
-        name="phoneNumber" class="form-control" placeholder="Example: 555-123-4567" required
-      >
+        name="phoneNumber" class="form-control" placeholder="Example: 555-123-4567" required>
       <div *ngIf="phoneNumber && !isPhoneValid(phoneNumber)" class="error-message">Please enter a valid phone number (999-999-9999).</div>
     </div>
 

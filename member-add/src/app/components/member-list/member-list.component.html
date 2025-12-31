@@ -1,11 +1,11 @@
 <div class="member-list-container">
-  <div class="header">
-    <h2>Member Management</h2>
-    <button class="btn btn-primary" (click)="addMember()">Add Member</button>
-  </div>
+
 
   <div class="members-section" *ngIf="members.length > 0; else noMembers">
-    <h3>Members List</h3>
+    <div class="header">
+      <h2>Members List</h2>
+      <button class="btn btn-primary" (click)="addMember()">Add Member</button>
+    </div>
     <div class="members-grid">
       <div class="member-card" *ngFor="let member of members">
         <button class="delete-btn" (click)="deleteMember(member.id!)" title="Delete member" *ngIf="member.id">

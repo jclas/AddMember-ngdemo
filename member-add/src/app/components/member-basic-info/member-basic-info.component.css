@@ -1,3 +1,12 @@
+.header {
+	/* Make header match form-container width */
+	max-width: 600px;
+	margin: 0 auto;
+}
+.header h2 {
+  color: #333;
+}
+
 /* Style for error message in member-basic-info */
 .error-message {
   color: #c00;
@@ -21,7 +30,7 @@
 
 .form-header h2 {
   color: #333;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
 .form-header p {

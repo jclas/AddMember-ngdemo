@@ -1,6 +1,10 @@
+<div class="header">
+  <h2>Edit Member: <span class="display-name" *ngIf="member">{{ member.displayName }}</span></h2>
+</div>
 <div class="form-container">
-  <h2>Edit Member - Other Information</h2>
-  <h3 *ngIf="member">{{ member.displayName }}</h3>
+  <div class="form-header">
+    <h2>Other Information</h2>
+  </div>
   <form *ngIf="editMember">
     <div class="form-group">
       <label for="phoneNumber">Phone Number</label>

@@ -1,11 +1,12 @@
+<div class="header">
+  <h2>Edit Member: <span class="display-name" *ngIf="member">{{ member.displayName }}</span></h2>
+</div>
 <div class="form-container">
-  <h2>Edit Member - Basic Information</h2>
-  <h3 *ngIf="member">{{ member.displayName }}</h3>
+  <div class="form-header">
+    <h2>Basic Information</h2>
+  </div>
+  <!-- <h3 *ngIf="member">{{ member.displayName }}</h3> -->
   <form *ngIf="editMember">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" [(ngModel)]="editMember.email" name="email" class="form-control" required>
-    </div>
     <div class="form-group">
       <label for="displayName">Display Name</label>
       <input type="text" id="displayName" [(ngModel)]="editMember.displayName" name="displayName" class="form-control" required>
@@ -19,6 +20,10 @@
         <label for="lastName">Last Name</label>
         <input type="text" id="lastName" [(ngModel)]="editMember.lastName" name="lastName" class="form-control" required>
       </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="editMember.email" name="email" class="form-control" required>
     </div>
     <div class="form-actions">
       <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!isFormValid()">Save</button>
