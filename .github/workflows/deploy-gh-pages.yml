@@ -31,5 +31,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/member-add
+          folder: member-add/dist/member-add
           clean: true
